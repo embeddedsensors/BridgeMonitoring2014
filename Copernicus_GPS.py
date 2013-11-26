@@ -23,15 +23,13 @@ RX-B        P9 24
 import serial, os
 
 class GPS:
-    resp = ''
-    prev = ''
-    info = []
+    prev = []
 
     def __init__(self, port):
         ''' Call the constructor to set up the object '''
         os.system('echo uart1 > /sys/devices/bone_capemgr.9/slots')
         self.com = serial.Serial(port=port)
-        # Send the init string to tell the GPS to send NMEA
+        # Send the init string to tell the GPS to send NMEA at 1 Hz
         nmeaCmd = '$PTNLSNM,0100,01*56\r\n'
         self.com.write(nmeaCmd)
 
@@ -41,17 +39,17 @@ class GPS:
 
         Returns [UTC, DATE, NLAT, WLONG] as ints
         '''
+        resp = ''
+        info = []
         if (self.com.inWaiting() > 0):
-            self.resp += self.com.read()
-            if "\r\n" in self.resp:
-                if "$GPRMC" in self.resp:
-                    data = self.resp.split(',')
+            resp += self.com.read()
+            if '\r\n' in resp:
+                if '$GPRMC' in resp:
+                    data = resp.split(',')
                     # Info = [UTC, DATE, NLAT, WLONG]
-                    self.info = [data[1], data[9], data[3], data[5]]
-                    print self.info
-                    self.prev = self.info
-                    return self.info
-                self.resp = ''
-                self.info = []
+                    info = [data[1], data[9], data[3], data[5]]
+                    #print info
+                    self.prev = info
+                    return info
         else:
             return self.prev

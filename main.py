@@ -63,10 +63,10 @@ def sampleRun(duration, sampleRate, channels, timer_pin):
     '''
     Sample from the ADC and log into an array
     '''
-    # Initialise the ADC using the default mode (use default I2C address)
-    # For now only use one ADC
+    # Initialise the ADC using the default mode
+    # For now only use one ADC, so only create one ADC object
     print 'Data collection started...Press Ctrl+C to exit\n'
-    adc = ADS1x15(address=ADC_ADDRESS_1,ic=ADS1115)
+    adc = ADS1x15(address=ADC_ADDRESS_1, ic=ADS1115)
     samples = range(0, ((duration*sampleRate)-1))
     volts = [None] * len(samples)
     for sample in samples:
