@@ -8,18 +8,18 @@ with the data, For now print out or log the raw data to a file to get bare bones
 the package up and running.
 
 To run this script fill in these variables for your application:
-    SAMPLE_RATE     = The sample rate for data collection, (int) in Hz
-    DURATION        = The duration for data logging, (int) in seconds
-    LOGFILE_NAME    = The logfile to save the data to, (string) relative path
-    CHANNELS        = The channels to collect data to in an array, [int, int] from 0-3
-    ADC_ADDRESS_1   = The I2C address of the first ADC (Defualt is 0x48)
+      SAMPLE_RATE     = The sample rate for data collection, (int) in Hz
+      DURATION        = The duration for data logging, (int) in seconds
+      LOGFILE_NAME    = The logfile to save the data to, (string) relative path
+      CHANNELS        = The channels to collect data to in an array, [int, int] from 0-3
+      ADC_ADDRESS_1   = The I2C address of the first ADC (Defualt is 0x48)
 
 PIN SETUP:
-    TIMER PIN = P8_12
-    GPS TX    = P9_26
-    GPS RX    = P9_24
-    ADC SCL   = P9_19
-    ADC SDA   = P9_20
+      TIMER PIN = P8_12
+      GPS TX    = P9_26
+      GPS RX    = P9_24
+      ADC SCL   = P9_19
+      ADC SDA   = P9_20
 
 TODO: Eventually, this script could be used to send the log file to a remote computer using
       a wifi dongle, or Xbee module. This way a remote computer can gather data from multiple

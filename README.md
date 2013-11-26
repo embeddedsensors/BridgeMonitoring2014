@@ -25,3 +25,7 @@ GPS RX              >> P9_24 <br/>
 ADC SCL             >> P9_19 <br/>
 ADC SDA             >> P9_20 <br/>
 
+<h2>Running The Main Script</h2>
+<code>$ chmod +x main.py</code><br/>
+<code>$ ./main.py</code></br>
+
