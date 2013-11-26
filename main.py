@@ -21,12 +21,14 @@ PIN SETUP:
     ADC SCL   = P9_19
     ADC SDA   = P9_20
 
-TODO: This script will next be updated to handle GPS data to time synchronize the data collection
-      and logging/
-
-      Eventually, this script could be used to send the log file to a remote computer using
+TODO: Eventually, this script could be used to send the log file to a remote computer using
       a wifi dongle, or Xbee module. This way a remote computer can gather data from multiple
       sensor packages for data analysis.
+
+      The only missing functionality of this script right now is the ability to analyze the data.
+      Right now it seems that the most glaring imperfection of this program is the weird time delay
+      in between logging the data and writing it to a file. I am completely uncertain what is causing
+      this and what the delay even is.
 
 Written By: Matthew Iannucci with Adafruits BeagleBone Python Libraries
 Fall 2013
@@ -34,7 +36,7 @@ Fall 2013
 import time, signal, sys
 import Adafruit_BBIO.GPIO as GPIO
 from Adafruit_ADS1x15 import ADS1x15
-# from Copernicus_GPS import GPS
+from Copernicus_GPS import GPS
 
 ADS1115 = 0x01    # 16-bit ADC Address
 
@@ -67,6 +69,7 @@ def sampleRun(duration, sampleRate, channels, timer_pin):
     # For now only use one ADC, so only create one ADC object
     print 'Data collection started...Press Ctrl+C to exit\n'
     adc = ADS1x15(address=ADC_ADDRESS_1, ic=ADS1115)
+    gps = GPS()
     samples = range(0, ((duration*sampleRate)-1))
     volts = [None] * len(samples)
     for sample in samples:
@@ -77,7 +80,8 @@ def sampleRun(duration, sampleRate, channels, timer_pin):
             # to data from multiple ADC's.
             volts[sample] = [adc.readADCSingleEnded(channels[0], 3300, sampleRate) / 1000,
                              adc.readADCSingleEnded(channels[1], 3300, sampleRate) / 1000,
-                             adc.readADCSingleEnded(channels[2], 3300, sampleRate) / 1000]
+                             adc.readADCSingleEnded(channels[2], 3300, sampleRate) / 1000,
+                             gps.getData()[0]]
         else:
             volts[sample] = adc.readADCSingleEnded(channels, 3300, SAMPLE_RATE) / 1000
     return volts
@@ -89,16 +93,16 @@ def log(filename, data, sampleRate, duration, channels):
     fp = open(filename, 'w+')
     fp.write('ADS 1115 Data Collection\nSample Rate: ' + str(sampleRate) + ' Herz\nDuration: ' + str(duration) + ' Seconds\n')
     fp.write(time.strftime('%X %x %Z') + '\n--------------------------------------------------------------\n')
-    for sample in data:
+    for dataset in data:
         if isinstance(channels, int):
-            fp.write(str(sample) + '\n')
+            fp.write(str(dataset) + '\n')
         else:
-            j = range(0,len(channels))
+            j = range(0,len(channels)+1)
             for k in j:
                 if k == max(j):
-                    fp.write(str(sample[k]) + '\n')
+                    fp.write(str(dataset[k]) + '\n')
                 else:
-                    fp.write(str(sample[k]) + ',')
+                    fp.write(str(dataset[k]) + ',')
     print 'Data logged to ' + filename + '\n'
 
 def main(filename, sampleRate, duration, channels, timer_pin):

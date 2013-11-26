@@ -25,7 +25,7 @@ import serial, os
 class GPS:
     prev = []
 
-    def __init__(self, port):
+    def __init__(self, port='/dev/ttys0'):
         ''' Call the constructor to set up the object '''
         os.system('echo uart1 > /sys/devices/bone_capemgr.9/slots')
         self.com = serial.Serial(port=port)
