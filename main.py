@@ -30,7 +30,7 @@ TODO: Eventually, this script could be used to send the log file to a remote com
       in between logging the data and writing it to a file. I am completely uncertain what is causing
       this and what the delay even is.
 
-Written By: Matthew Iannucci with Adafruits BeagleBone Python Libraries
+Written By: Matthew Iannucci with Adafruit's BeagleBone Python Libraries
 Fall 2013
 '''
 import time, signal, sys
