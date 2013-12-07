@@ -36,14 +36,15 @@ Fall 2013
 import time, signal, sys
 import Adafruit_BBIO.GPIO as GPIO
 from Adafruit_ADS1x15 import ADS1x15
-from Copernicus_GPS import GPS
+#from Copernicus_GPS import GPS
 
 ADS1115 = 0x01    # 16-bit ADC Address
 
+GPSENABLED = False
 SAMPLE_RATE = 200
 DURATION = 10
 LOGFILE_NAME = 'rawData.txt'
-CHANNELS = [0, 1, 2]
+CHANNELS = [0, 2, 3]
 TIMER_PIN = 'P8_12'
 ADC_ADDRESS_1 = 0x48
 
@@ -69,7 +70,8 @@ def sampleRun(duration, sampleRate, channels, timer_pin):
     # For now only use one ADC, so only create one ADC object
     print 'Data collection started...Press Ctrl+C to exit\n'
     adc = ADS1x15(address=ADC_ADDRESS_1, ic=ADS1115)
-    gps = GPS()
+    if GPSENABLED:
+        gps = GPS()
     samples = range(0, ((duration*sampleRate)-1))
     volts = [None] * len(samples)
     for sample in samples:
@@ -77,12 +79,18 @@ def sampleRun(duration, sampleRate, channels, timer_pin):
         if not isinstance(channels, int):
             # Read channels 0 through 2 in single-ended mode, +/-3.3V, 200sps
             # Eventually, this can be called multiple times with different objects to provide access
-            # to data from multiple ADC's.
-            volts[sample] = [adc.readADCSingleEnded(channels[0], 3300, sampleRate) / 1000,
-                             adc.readADCSingleEnded(channels[1], 3300, sampleRate) / 1000,
-                             adc.readADCSingleEnded(channels[2], 3300, sampleRate) / 1000,
-                             gps.getData()[0]]
+            # to data from multiple ADC's. Uncomment the first one to include a timestamp.
+            if GPSENABLED:
+                volts[sample] = [adc.readADCSingleEnded(channels[0], 3300, sampleRate) / 1000,
+                                 adc.readADCSingleEnded(channels[1], 3300, sampleRate) / 1000,
+                                 adc.readADCSingleEnded(channels[2], 3300, sampleRate) / 1000,
+                                 gps.getData()[0]]
+            else:
+                volts[sample] = [adc.readADCSingleEnded(channels[0], 3300, sampleRate) / 1000,
+                                 adc.readADCSingleEnded(channels[1], 3300, sampleRate) / 1000,
+                                 adc.readADCSingleEnded(channels[2], 3300, sampleRate) / 1000 ]
         else:
+            #volts[sample] = [adc.readADCSingleEnded(channels, 3300, SAMPLE_RATE) / 1000, gps.getData()[0]]
             volts[sample] = adc.readADCSingleEnded(channels, 3300, SAMPLE_RATE) / 1000
     return volts
 
@@ -97,7 +105,11 @@ def log(filename, data, sampleRate, duration, channels):
         if isinstance(channels, int):
             fp.write(str(dataset) + '\n')
         else:
-            j = range(0,len(channels)+1)
+            j = 0
+            if GPSENABLED:
+                j = range(0,len(channels)+1)
+            else:
+                j = range(0,len(channels))
             for k in j:
                 if k == max(j):
                     fp.write(str(dataset[k]) + '\n')
