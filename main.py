@@ -36,7 +36,6 @@ Fall 2013
 import time, signal, sys
 import Adafruit_BBIO.GPIO as GPIO
 from Adafruit_ADS1x15 import ADS1x15
-#from Copernicus_GPS import GPS
 
 ADS1115 = 0x01    # 16-bit ADC Address
 
@@ -70,7 +69,9 @@ def sampleRun(duration, sampleRate, channels, timer_pin):
     # For now only use one ADC, so only create one ADC object
     print 'Data collection started...Press Ctrl+C to exit\n'
     adc = ADS1x15(address=ADC_ADDRESS_1, ic=ADS1115)
+    gps = []
     if GPSENABLED:
+        from Copernicus_GPS import GPS
         gps = GPS()
     samples = range(0, ((duration*sampleRate)-1))
     volts = [None] * len(samples)
