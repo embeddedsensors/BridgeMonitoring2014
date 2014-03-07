@@ -116,18 +116,10 @@
 	"buffers":
 	[
 		{
-			"file": "SeniorDesign.sublime-project",
-			"settings":
-			{
-				"buffer_size": 73,
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": "main.py",
 			"settings":
 			{
-				"buffer_size": 5280,
+				"buffer_size": 5291,
 				"line_ending": "Unix"
 			}
 		}
@@ -135,9 +127,21 @@
 	"build_system": "ASV Make",
 	"command_palette":
 	{
-		"height": 375.0,
+		"height": 60.0,
 		"selected_items":
 		[
+			[
+				"Package Control: install",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ins",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: isntal",
+				"Package Control: Install Package"
+			],
 			[
 				"Package Control: insta",
 				"Package Control: Install Package"
@@ -161,13 +165,9 @@
 			[
 				"Package Control: instal",
 				"Package Control: Install Package"
-			],
-			[
-				"Package Control: ins",
-				"Package Control: Install Package"
 			]
 		],
-		"width": 588.0
+		"width": 633.0
 	},
 	"console":
 	{
@@ -190,6 +190,14 @@
 	},
 	"file_history":
 	[
+		"/home/matthew/Development/SeniorDesign/main.py",
+		"/home/matthew/Development/SeniorDesign/Adafruit_ADS1x15.py",
+		"/home/matthew/Development/SeniorDesign/Copernicus_GPS.py",
+		"/home/matthew/Development/SeniorDesign/SeniorDesign.sublime-project",
+		"/home/matthew/.config/sublime-text-3/Packages/Theme - Nil/Big Duo.tmTheme",
+		"/home/matthew/Downloads/RainbowDrops.xml",
+		"/home/matthew/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
+		"/home/matthew/.config/sublime-text-3/Packages/User/SublimeLinter.sublime-settings",
 		"/home/matthew/Development/BeagleBone/SeniorDesign/Adafruit_ADS1x15.py",
 		"/home/matthew/Development/BeagleBone/SeniorDesign/main.py",
 		"/home/matthew/Documents/ASV/trunk/src/maestrod/maestro_motord.py",
@@ -209,7 +217,6 @@
 		"/tmp/sublime-svn-1390923453/SVN",
 		"/home/matthew/Documents/ASV/trunk/ASV.sublime-project",
 		"/home/matthew/Documents/ASV/trunk/src/visiond/Mission.cpp",
-		"/home/matthew/.config/sublime-text-3/Packages/User/SublimeLinter.sublime-settings",
 		"/home/matthew/.config/sublime-text-3/Packages/User/Package Control.sublime-settings",
 		"/home/matthew/Documents/ASV/trunk/src/VLS/UIElement.java",
 		"/home/matthew/Documents/ASV/trunk/src/VLS/Texture.java",
@@ -245,7 +252,6 @@
 		"/home/matthew/Documents/ASV/trunk/src/visiond/missionTemplate.cpp",
 		"/home/matthew/Documents/ASV/trunk/src/VLS/Simulation.java",
 		"/home/matthew/Documents/ASV/trunk/src/VLS/Scrollable.java",
-		"/home/matthew/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
 		"/home/matthew/Documents/ASV/trunk/src/controld/startController.py",
 		"/home/matthew/Documents/ASV/trunk/src/controld/Controller.py",
 		"/home/matthew/Documents/ASV/trunk/src/missiond/Behaviors/BuoyBehaviors.py",
@@ -296,12 +302,11 @@
 		"/home/matthew/Development/myPage/templates/bio.html",
 		"/home/matthew/Development/Resume/Resume/MatthewIannucciResume.tex",
 		"/home/matthew/Development/Android/Projects/hackWinds/hackWinds/src/com/nucc/hackwinds/MainActivity.java",
-		"/home/matthew/.config/sublime-text-3/Packages/Theme - Nil/Big Duo.tmTheme",
 		"/home/matthew/Development/Android/Projects/hackWinds/hackWinds/AndroidManifest.xml"
 	],
 	"find":
 	{
-		"height": 26.0
+		"height": 36.0
 	},
 	"find_in_files":
 	{
@@ -334,270 +339,34 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "SeniorDesign.sublime-project",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 73,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								73,
-								73
-							]
-						],
-						"settings":
-						{
-							"codeintel": true,
-							"codeintel_config":
-							{
-								"JavaScript":
-								{
-									"codeintel_max_recursive_dir_depth": 2,
-									"codeintel_scan_files_in_project": false,
-									"javascriptExtraPaths":
-									[
-									]
-								},
-								"PHP":
-								{
-									"codeintel_max_recursive_dir_depth": 5,
-									"codeintel_scan_files_in_project": false,
-									"phpExtraPaths":
-									[
-									]
-								},
-								"Python":
-								{
-									"env":
-									{
-									}
-								}
-							},
-							"codeintel_enabled_languages":
-							[
-								"JavaScript",
-								"Mason",
-								"XBL",
-								"XUL",
-								"RHTML",
-								"SCSS",
-								"Python",
-								"HTML",
-								"Ruby",
-								"Python3",
-								"XML",
-								"Sass",
-								"XSLT",
-								"Django",
-								"HTML5",
-								"Perl",
-								"CSS",
-								"Twig",
-								"Less",
-								"Smarty",
-								"Node.js",
-								"Tcl",
-								"TemplateToolkit",
-								"PHP"
-							],
-							"codeintel_live": true,
-							"codeintel_live_enabled_languages":
-							[
-								"JavaScript",
-								"Mason",
-								"XBL",
-								"XUL",
-								"RHTML",
-								"SCSS",
-								"Python",
-								"HTML",
-								"Ruby",
-								"Python3",
-								"XML",
-								"Sass",
-								"XSLT",
-								"Django",
-								"HTML5",
-								"Perl",
-								"CSS",
-								"Twig",
-								"Less",
-								"Smarty",
-								"Node.js",
-								"Tcl",
-								"TemplateToolkit",
-								"PHP"
-							],
-							"codeintel_max_recursive_dir_depth": 10,
-							"codeintel_scan_exclude_dir":
-							{
-								"JavaScript":
-								[
-									"/build/",
-									"/min/"
-								]
-							},
-							"codeintel_scan_files_in_project": true,
-							"codeintel_selected_catalogs":
-							[
-								"PyWin32",
-								"jQuery",
-								"Rails"
-							],
-							"codeintel_snippets": true,
-							"codeintel_syntax_map":
-							{
-								"Python Django": "Python"
-							},
-							"codeintel_tooltips": "popup",
-							"sublime_auto_complete": true,
-							"syntax": "Packages/JavaScript/JSON.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
 					"file": "main.py",
-					"semi_transient": false,
+					"semi_transient": true,
 					"settings":
 					{
-						"buffer_size": 5280,
+						"buffer_size": 5291,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2212,
-								2212
+								0,
+								0
 							]
 						],
 						"settings":
 						{
-							"codeintel": true,
-							"codeintel_config":
-							{
-								"JavaScript":
-								{
-									"codeintel_max_recursive_dir_depth": 2,
-									"codeintel_scan_files_in_project": false,
-									"javascriptExtraPaths":
-									[
-									]
-								},
-								"PHP":
-								{
-									"codeintel_max_recursive_dir_depth": 5,
-									"codeintel_scan_files_in_project": false,
-									"phpExtraPaths":
-									[
-									]
-								},
-								"Python":
-								{
-									"env":
-									{
-									}
-								}
-							},
-							"codeintel_enabled_languages":
-							[
-								"JavaScript",
-								"Mason",
-								"XBL",
-								"XUL",
-								"RHTML",
-								"SCSS",
-								"Python",
-								"HTML",
-								"Ruby",
-								"Python3",
-								"XML",
-								"Sass",
-								"XSLT",
-								"Django",
-								"HTML5",
-								"Perl",
-								"CSS",
-								"Twig",
-								"Less",
-								"Smarty",
-								"Node.js",
-								"Tcl",
-								"TemplateToolkit",
-								"PHP"
-							],
-							"codeintel_live": true,
-							"codeintel_live_enabled_languages":
-							[
-								"JavaScript",
-								"Mason",
-								"XBL",
-								"XUL",
-								"RHTML",
-								"SCSS",
-								"Python",
-								"HTML",
-								"Ruby",
-								"Python3",
-								"XML",
-								"Sass",
-								"XSLT",
-								"Django",
-								"HTML5",
-								"Perl",
-								"CSS",
-								"Twig",
-								"Less",
-								"Smarty",
-								"Node.js",
-								"Tcl",
-								"TemplateToolkit",
-								"PHP"
-							],
-							"codeintel_max_recursive_dir_depth": 10,
-							"codeintel_scan_exclude_dir":
-							{
-								"JavaScript":
-								[
-									"/build/",
-									"/min/"
-								]
-							},
-							"codeintel_scan_files_in_project": true,
-							"codeintel_selected_catalogs":
-							[
-								"PyWin32",
-								"jQuery",
-								"Rails"
-							],
-							"codeintel_snippets": true,
-							"codeintel_syntax_map":
-							{
-								"Python Django": "Python"
-							},
-							"codeintel_tooltips": "popup",
-							"sublime_auto_complete": true,
 							"syntax": "Packages/Python/Python.tmLanguage",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 486.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -670,7 +439,7 @@
 		[
 			[
 				"",
-				"~/Documents/ASV/trunk/ASV.sublime-project"
+				"~/Development/ASV/trunk/ASV.sublime-project"
 			]
 		],
 		"width": 380.0

@@ -33,7 +33,9 @@ TODO: Eventually, this script could be used to send the log file to a remote com
 Written By: Matthew Iannucci with Adafruit's BeagleBone Python Libraries
 Fall 2013
 '''
-import time, signal, sys
+import signal
+import sys
+import time
 import Adafruit_BBIO.GPIO as GPIO
 from Adafruit_ADS1x15 import ADS1x15
 
@@ -89,7 +91,7 @@ def sampleRun(duration, sampleRate, channels, timer_pin):
             else:
                 volts[sample] = [adc.readADCSingleEnded(channels[0], 3300, sampleRate) / 1000,
                                  adc.readADCSingleEnded(channels[1], 3300, sampleRate) / 1000,
-                                 adc.readADCSingleEnded(channels[2], 3300, sampleRate) / 1000 ]
+                                 adc.readADCSingleEnded(channels[2], 3300, sampleRate) / 1000]
         else:
             #volts[sample] = [adc.readADCSingleEnded(channels, 3300, SAMPLE_RATE) / 1000, gps.getData()[0]]
             volts[sample] = adc.readADCSingleEnded(channels, 3300, SAMPLE_RATE) / 1000

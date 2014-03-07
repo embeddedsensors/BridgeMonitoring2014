@@ -20,7 +20,8 @@ TX-B        P9 26
 RX-B        P9 24
 '''
 
-import serial, os
+import serial
+import os
 
 class GPS:
     prev = []
@@ -52,4 +53,4 @@ class GPS:
                     self.prev = info
                     return info
         else:
-            return self.prev
+            return self.prev  # If theres nothing waiting, return the previous string
