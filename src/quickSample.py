@@ -3,8 +3,6 @@
 '''
 OCE 495 Senior Design Bridge Monitoring
 
-
-
 Written By: Matthew Iannucci
 Spring 2014
 
@@ -12,7 +10,7 @@ Spring 2014
 import signal
 import sys
 import time
-from Adafruit_ADS1x15 import ADS1x15
+from libs.Adafruit_ADS1x15 import ADS1x15
 
 ADS1115 = 0x01  # 16-bit ADC Address
 ADC_ADDRESS_1 = 0x48
@@ -45,7 +43,6 @@ def sampleRun(duration, sampleRate, channels):
                              adc.readADCSingleEnded(channels[1], 3300, sampleRate) / 1000,
                              adc.readADCSingleEnded(channels[2], 3300, sampleRate) / 1000]
         else:
-            #volts[sample] = [adc.readADCSingleEnded(channels, 3300, SAMPLE_RATE) / 1000, gps.getData()[0]]
             volts[sample] = adc.readADCSingleEnded(channels, 3300, SAMPLE_RATE) / 1000
     return volts
 
@@ -79,5 +76,5 @@ def main(filename, sampleRate, duration, channels):
 
 if __name__ == "__main__":
     signal.signal(signal.SIGINT, signal_handler)
-    main(LOGFILE_NAME, SAMPLE_RATE, DURATION, CHANNELS, TIMER_PIN)
+    main(LOGFILE_NAME, SAMPLE_RATE, DURATION, CHANNELS)
     print 'Data logging successful. Exiting...\n'
