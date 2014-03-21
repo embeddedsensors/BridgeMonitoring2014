@@ -23,7 +23,7 @@
                 /* the pin header uses */
                 "P9.24",        /* uart1_rxd */
                 "P9.26",        /* uart1_txd */
-                "P8.26",         /* gpio1_7   */
+                "P8.26",        /* gpio1_19  */
                 /* the hardware ip uses */
                 "uart1",
                 "gpio1_29";
