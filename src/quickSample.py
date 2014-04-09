@@ -15,10 +15,11 @@ from libs.Adafruit_ADS1x15 import ADS1x15
 ADS1115 = 0x01  # 16-bit ADC Address
 ADC_ADDRESS_1 = 0x48
 
-SAMPLE_RATE = 200
-DURATION = 10
-LOGFILE_NAME = 'rawData.txt'
+SAMPLE_RATE = 100
+DURATION = 60
+LOGFILE_NAME = 'rawData'
 CHANNELS = [0, 1, 2]
+i = 1
 
 def signal_handler(signal, frame):
     '''
@@ -50,7 +51,7 @@ def log(filename, data, sampleRate, duration, channels):
     '''
     Log the data collected in an array to a file to be used for later
     '''
-    fp = open(filename, 'w+')
+    fp = open(filename + '-' + str(time.clock()) + '.txt', 'w+')
     fp.write('ADS 1115 Data Collection\nSample Rate: ' + str(sampleRate) + ' Herz\nDuration: ' + str(duration) + ' Seconds\n')
     fp.write(time.strftime('%X %x %Z') + '\n--------------------------------------------------------------\n')
     for dataset in data:
@@ -64,7 +65,7 @@ def log(filename, data, sampleRate, duration, channels):
                     fp.write(str(dataset[k]) + '\n')
                 else:
                     fp.write(str(dataset[k]) + ',')
-    print 'Data logged to ' + filename + '\n'
+    print 'Data logged to ' + filename + str(i) + '.txt' + '\n'
 
 def main(filename, sampleRate, duration, channels):
     '''
@@ -73,6 +74,7 @@ def main(filename, sampleRate, duration, channels):
     data = sampleRun(duration, sampleRate, channels)
     print 'Finished data collection. Logging...\n'
     log(filename, data, sampleRate, duration, channels)
+    time.sleep(60*15)  # Sleep for 15 minutes
 
 if __name__ == "__main__":
     signal.signal(signal.SIGINT, signal_handler)
