@@ -19,7 +19,6 @@ SAMPLE_RATE = 100
 DURATION = 60
 LOGFILE_NAME = 'rawData'
 CHANNELS = [0, 1, 2]
-i = 1
 
 def signal_handler(signal, frame):
     '''
@@ -47,11 +46,11 @@ def sampleRun(duration, sampleRate, channels):
             volts[sample] = adc.readADCSingleEnded(channels, 3300, SAMPLE_RATE) / 1000
     return volts
 
-def log(filename, data, sampleRate, duration, channels):
+def log(filename, data, sampleRate, duration, channels, rectime):
     '''
     Log the data collected in an array to a file to be used for later
     '''
-    fp = open(filename + '-' + str(time.clock()) + '.txt', 'w+')
+    fp = open(filename + '-' + str(rectime) + '.txt', 'w+')
     fp.write('ADS 1115 Data Collection\nSample Rate: ' + str(sampleRate) + ' Herz\nDuration: ' + str(duration) + ' Seconds\n')
     fp.write(time.strftime('%X %x %Z') + '\n--------------------------------------------------------------\n')
     for dataset in data:
@@ -65,16 +64,20 @@ def log(filename, data, sampleRate, duration, channels):
                     fp.write(str(dataset[k]) + '\n')
                 else:
                     fp.write(str(dataset[k]) + ',')
-    print 'Data logged to ' + filename + str(i) + '.txt' + '\n'
+    print 'Data logged to ' + filename + str(rectime) + '.txt' + '\n'
 
 def main(filename, sampleRate, duration, channels):
     '''
     Run the main log for the data logging application
     '''
-    data = sampleRun(duration, sampleRate, channels)
-    print 'Finished data collection. Logging...\n'
-    log(filename, data, sampleRate, duration, channels)
-    time.sleep(60*15)  # Sleep for 15 minutes
+    i = 0
+    while i < 8:
+        rectime = time.clock()
+        data = sampleRun(duration, sampleRate, channels)
+        print 'Finished data collection. Logging...\n'
+        log(filename, data, sampleRate, duration, channels, rectime)
+        time.sleep(60*15)  # Sleep for 15 minutes
+        i += 1
 
 if __name__ == "__main__":
     signal.signal(signal.SIGINT, signal_handler)
