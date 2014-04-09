@@ -33,6 +33,14 @@ class QuickSample:
     def __init__(self, filename, sampleRate, sampleDuration, testDuration, channels):
         '''Default constructor block
 
+        @param filename The base filename to record data to (Without file extension)
+        @param sampleRate The ADC sample rate in Herz
+        @param sampleDuration The duration to sample during each window in seconds
+        @param testDuration How long the entire test lasts in seconds
+        @param channels An array containing eahc channel to sample on i.e. [1,2,3]
+
+        @return New QuickSample object
+
         '''
         self.filename = filename
         self.sampleRate = sampleRate
@@ -41,8 +49,9 @@ class QuickSample:
         self.channels = channels
 
     def sampleRun(self):
-        '''
-        Sample from the ADC and log into an array
+        '''Sample from the ADC and log into an array
+
+        @return An array of data of length channels X samples
         '''
         # Initialise the ADC using the default mode
         # For now only use one ADC, so only create one ADC object
