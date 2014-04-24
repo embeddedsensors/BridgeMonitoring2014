@@ -18,6 +18,7 @@ ADC_ADDRESS_1 = 0x48  # Default, when the right pin is grounded
 SAMPLE_RATE = 100  # in herz
 SAMPLE_DURATION = 60  # in seconds
 TEST_DURATION = 120  # in minutes
+SLEEP_DURATION = 3 # in minutes
 LOGFILE_NAME = 'rawData'  # without the extension
 CHANNELS = [0, 1, 2]  # ADC channels to read in on
 
@@ -95,7 +96,7 @@ class QuickSample:
             rectime = time.clock()
             data = self.sampleRun()
             self.log(rectime, data)
-            time.sleep(15*60)  # Sleep for 15 minutes
+            time.sleep(SLEEP_DURATION*60)  # Sleep for 6 minutes
             i += 1
         print 'Finished data collection. Logging...\n'
 
