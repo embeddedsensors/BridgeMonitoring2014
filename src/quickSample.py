@@ -28,7 +28,6 @@ def signal_handler(signal, frame):
     print 'You pressed Ctrl+C! Exiting...\n'
     sys.exit(0)
 
-
 class QuickSample:
     
     def __init__(self, filename, sampleRate, sampleDuration, testDuration, sleepDuration, channels):
