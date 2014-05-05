@@ -1,0 +1,42 @@
+/dts-v1/;
+
+/plugin/;
+
+/ {
+    compatible = "ti,beaglebone", "ti,beaglebone-black";
+    part-number = "BB-PPSGPIO";
+    version = "00A0";
+
+
+    /* state the resources this cape uses */
+    exclusive-use =
+            /* the pin header uses */
+            "P8.20",        /* gpio1_31   */
+            /* the hardware ip uses */
+            "gpio2_31";
+
+
+    fragment@0 {
+        target = <&am33xx_pinmux>;
+        __overlay__ {
+            gps_pps_pins: pinmux_gps_pps_pins {
+			    pinctrl-single,pins = <
+				    0x84 0x27 /* P8.20 gpio1_31 (63) */
+								>;
+			};
+        };
+    };       
+
+	fragment@2 {
+		target = <&ocp>;			
+        __overlay__ {
+			pps {
+				compatible = "pps-gpio";
+                status = "okay";
+                pinctrl-names = "default";
+                pinctrl-0 = <&gps_pps_pins>;
+                gpios = <&gpio2 31 0 >;
+			};
+		};
+	};
+};
