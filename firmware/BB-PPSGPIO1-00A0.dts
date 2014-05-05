@@ -4,7 +4,7 @@
 / {
   compatible = "ti,beaglebone", "ti,beaglebone-black";
  
-  part-number = "gps-pps";
+  part-number = "BB-PPSGPIO";
   version = "00A0";
  
   exclusive-use = "P8.4", "gpio1_7";
