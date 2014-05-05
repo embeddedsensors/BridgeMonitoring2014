@@ -53,5 +53,5 @@ matdata['SE3meter'] = datastruct[0]
 matdata['SW3meter'] = datastruct[1]
 matdata['NW3meter'] = datastruct[2]
 matdata['NE3meter'] = datastruct[3]
-sio.savemat('../bridge_gps.mat', matdata)
+sio.savemat('../data/bridge_gps.mat', matdata)
 print 'Finished!'
