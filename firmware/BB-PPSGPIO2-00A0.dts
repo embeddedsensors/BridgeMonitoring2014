@@ -4,7 +4,7 @@
 
 / {
     compatible = "ti,beaglebone", "ti,beaglebone-black";
-    part-number = "BB-PPSGPIO";
+    part-number = "BB-PPSGPIO2";
     version = "00A0";
 
 
