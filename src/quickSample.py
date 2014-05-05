@@ -31,7 +31,7 @@ def signal_handler(signal, frame):
 
 class QuickSample:
     
-    def __init__(self, filename, sampleRate, sampleDuration, testDuration, channels):
+    def __init__(self, filename, sampleRate, sampleDuration, testDuration, sleepDuration, channels):
         '''Default constructor block
 
         @param filename The base filename to record data to (Without file extension)
@@ -47,6 +47,7 @@ class QuickSample:
         self.sampleRate = sampleRate
         self.sampleDuration = sampleDuration
         self.testDuration = testDuration
+        self.sleepDuration = sleepDuration
         self.channels = channels
 
     def sampleRun(self):
@@ -92,16 +93,16 @@ class QuickSample:
         '''
         print "Data collection initiated. Press Ctrl+C to cancel"
         i = 0
-        while i < (self.testDuration/15):
+        while i < (self.testDuration/self.sleepDuration):
             rectime = time.clock()
             data = self.sampleRun()
             self.log(rectime, data)
-            time.sleep(SLEEP_DURATION*60)  # Sleep for 6 minutes
+            time.sleep(self.sleepDuration*60)  # Sleep
             i += 1
         print 'Finished data collection. Logging...\n'
 
 if __name__ == "__main__":
     signal.signal(signal.SIGINT, signal_handler)
-    q = QuickSample(LOGFILE_NAME, SAMPLE_RATE, SAMPLE_DURATION, TEST_DURATION, CHANNELS)
+    q = QuickSample(LOGFILE_NAME, SAMPLE_RATE, SAMPLE_DURATION, TEST_DURATION, SLEEP_DURATION, CHANNELS)
     q.mainLoop()
     print 'Data logging successful. Exiting...\n'
