@@ -13,7 +13,7 @@
             /* the pin header uses */
             "P8.20",        /* gpio1_31   */
             /* the hardware ip uses */
-            "gpio2_31";
+            "gpio2_31";     /* weird offset by one thing */
 
 
     fragment@0 {
