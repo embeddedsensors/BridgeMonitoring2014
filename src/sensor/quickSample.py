@@ -18,7 +18,7 @@ ADC_ADDRESS_1 = 0x48  # Default, when the right pin is grounded
 SAMPLE_RATE = 100  # in herz
 SAMPLE_DURATION = 60  # in seconds
 TEST_DURATION = 120  # in minutes
-SLEEP_DURATION = 3 # in minutes
+SLEEP_DURATION = 3  # in minutes
 LOGFILE_NAME = 'rawData'  # without the extension
 CHANNELS = [0, 1, 2]  # ADC channels to read in on
 
@@ -34,10 +34,10 @@ class QuickSample:
         '''Default constructor block
 
         @param filename The base filename to record data to (Without file extension)
-        @param sampleRate The ADC sample rate in Herz
+        @param sampleRate The ADC sample rate in Hertz
         @param sampleDuration The duration to sample during each window in seconds
         @param testDuration How long the entire test lasts in seconds
-        @param channels An array containing eahc channel to sample on i.e. [1,2,3]
+        @param channels An array containing each channel to sample on i.e. [1,2,3]
 
         @return New QuickSample object
 
@@ -54,7 +54,7 @@ class QuickSample:
 
         @return An array of data of length channels X samples
         '''
-        # Initialise the ADC using the default mode
+        # Initialize the ADC using the default mode
         # For now only use one ADC, so only create one ADC object
         adc = ADS1x15(address=ADC_ADDRESS_1, ic=ADS1115)
         samples = range(0, ((self.sampleDuration*self.sampleRate)-1))
