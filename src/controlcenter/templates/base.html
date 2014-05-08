@@ -1,0 +1,53 @@
+$def with (page)
+
+<html>
+<head>
+    <title>Bridge Health Monitoring Control Center</title>
+    <link rel="stylesheet" type="text/css" href="/static/Styles/mobile.css" media="only screen and (max-device-width: 767px)" />
+    <link rel="stylesheet" type="text/css" href="/static/Styles/screen.css" media="only screen and (min-device-width: 768px)" />
+    <link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico" />
+</head>
+<body>
+	<!-- Define the header for the page -->
+	<div id="header">
+		<h1><a href="/">Bridge Health Control Center</a></h1>
+	</div>
+	<!-- Create the three coloumn layout.-->
+	<div class="colmask threecol">
+		<div class="colmid">
+			<div class="colleft">
+				<div class="col1">
+					<!-- Column 1 start -->
+					<!-- Get the page data as declared in code.py -->
+					$:page
+					<!-- Column 1 end -->
+				</div>
+				<div class="col2">
+					<!-- Column 2 start -->
+	            	<div id="menu">
+		            	<h2><a href="/">Dashboard</a></h2>
+		            	<h2><a href="/stats">Stats</a></h2>
+		            	<h2><a href="/help">Help</a></h2>
+		            </div>
+					<!-- Column 2 end -->
+				</div>
+				<div class="col3">
+					<!-- Column 3 start -->
+					<!-- Column 3 end -->
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Ends the three column layout-->
+	<!-- Define the footer for the page -->
+	<div id="footer">
+		<center>	
+			<div id="copyright">
+				<h3>Copyright 2014, Matthew Iannucci</h3>
+			</div>
+		</center>
+	</div>
+</div>
+<!-- End the page layout -->
+</body>
+</html>

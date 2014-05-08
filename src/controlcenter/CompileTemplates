@@ -1,0 +1,3 @@
+#!/bin/sh 
+
+python2 web/template.py --compile templates/
