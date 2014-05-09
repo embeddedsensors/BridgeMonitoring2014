@@ -117,18 +117,21 @@ h2 a:active {
  Navigation Bar Settings
  ****************************************************************************/
 #navBar {
-	margin-left: auto;
-	margin-right: auto;
 }
 
 #navBar ul {
 	list-style-type:none;
 	margin:0;
 	padding:0;
+	text-align: center;
 }
 
 #navBar li {
 	display: inline;
+}
+
+#navBar a {
+	padding: .2em 1em;
 }
 
 /*****************************************************************************
