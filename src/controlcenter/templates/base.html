@@ -6,6 +6,10 @@ $def with (page)
     <link rel="stylesheet" type="text/css" href="/static/Styles/mobile.css" media="only screen and (max-device-width: 767px)" />
     <link rel="stylesheet" type="text/css" href="/static/Styles/screen.css" media="only screen and (min-device-width: 768px)" />
     <link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico" />
+    <script type="text/javascript" src="/static/Scripts/flot/jquery.js"></script>
+    <script type="text/javascript" src="/static/Scripts/flot/jquery.flot.js"></script>
+    <script type="text/javascript" src="/static/Scripts/jquery.csv-0.71.js"></script>
+    <script type="text/javascript" src="/static/Scripts/bridgecontrol.js"></script>
 </head>
 <body>
 	<!-- Define the header for the page -->
@@ -14,11 +18,11 @@ $def with (page)
 	</div>
 	<!-- Create the menu bar -->
 	<hr>
-	<div id="navBar">
+	<div id="navBar" class="links">
 		<ul>
-			<li><h2><a href="/">Dashboard</a></h2></li>
-			<li><h2><a href="/Stats">Stats</a></h2></li>
-			<li><h2><a href="/Help">About</a></h2></li>
+			<li><a href="/">Dashboard</a></li>
+			<li><a href="/stats">Stats</a></li>
+			<li><a href="/help">About</a></li>
 		</ul>
 	</div>
 	<hr>

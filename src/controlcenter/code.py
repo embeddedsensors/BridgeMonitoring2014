@@ -1,5 +1,7 @@
 import web
 
+from handleData import getNewData
+
 # Map out the urls
 urls = (
     '/', 'Index',
@@ -22,7 +24,8 @@ app = web.application(urls, globals())
 class Index:
     """ Show the overview page """
     def GET(self):
-        return render.index()
+        D = getNewData()
+        return render.index(D)
 
 class Stats:
     """ Call the stats page """
