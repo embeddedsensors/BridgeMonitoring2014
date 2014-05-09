@@ -25,7 +25,11 @@ class Index:
     """ Show the overview page """
     def GET(self):
         D = getNewData()
-        return render.index(D)
+        NW = [D[0], D[1], D[2]]
+        NE = [D[3], D[4], D[5]]
+        SE = [D[6], D[7], D[8]]
+        SW = [D[9], D[10], D[11]]
+        return render.index(NW, NE, SE, SW)
 
 class Stats:
     """ Call the stats page """

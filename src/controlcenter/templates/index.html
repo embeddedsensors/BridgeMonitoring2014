@@ -1,7 +1,30 @@
-$def with (D)
-<div id="homeContainer"> 
-
+$def with (NW, NE, SE, SW)
+<div id="homeContainer">
+    <div id="plotholder">
+    </div> 
+    <div id="datatester">
+        <p id="textP">
+        ahshad
+        </p>
+    </div>
 </div>
-<div id="data">
-$D
+<div id="NWdata">
+$for i in NW:
+    $for j in i:
+        $float(j)
+</div>
+<div id="NEdata">
+$for i in NW:
+    $for j in i:
+        $float(j)
+</div>
+<div id="SEdata">
+$for i in NW:
+    $for j in i:
+        $float(j)
+</div>
+<div id="SWdata">
+$for i in NW:
+    $for j in i:
+        $float(j)
 </div>

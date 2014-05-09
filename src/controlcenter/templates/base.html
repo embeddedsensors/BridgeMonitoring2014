@@ -6,10 +6,29 @@ $def with (page)
     <link rel="stylesheet" type="text/css" href="/static/Styles/mobile.css" media="only screen and (max-device-width: 767px)" />
     <link rel="stylesheet" type="text/css" href="/static/Styles/screen.css" media="only screen and (min-device-width: 768px)" />
     <link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico" />
-    <script type="text/javascript" src="/static/Scripts/flot/jquery.js"></script>
-    <script type="text/javascript" src="/static/Scripts/flot/jquery.flot.js"></script>
-    <script type="text/javascript" src="/static/Scripts/jquery.csv-0.71.js"></script>
+    <script src="http://code.jquery.com/jquery-1.8.2.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/flot/0.7/jquery.flot.min.js"></script>
+    <script src="http://jquery-csv.googlecode.com/git/src/jquery.csv.js"></script>
     <script type="text/javascript" src="/static/Scripts/bridgecontrol.js"></script>
+    <script>
+	jQuery( document ).ready(function() {
+  		flotTextData();
+	});
+
+	function flotTextData() {
+  		var options = {
+    		series: {
+      			lines: { show: true },
+    		}
+  		};
+  		var data1 = [];
+  		data1[0] = jQuery.csv.toArrays($('#NWdata').val(), {
+    		onParseValue: jQuery.csv.hooks.castToScalar
+  		});
+  		flot1 = jQuery.plot(jQuery('#plotholder'), data1, options);
+  		jQuery('#textP').text('happy');
+	}
+    </script>
 </head>
 <body>
 	<!-- Define the header for the page -->

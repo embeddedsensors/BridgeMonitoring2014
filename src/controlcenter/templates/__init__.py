@@ -14,15 +14,38 @@ help = CompiledTemplate(help, 'templates/help.html')
 join_ = help._join; escape_ = help._escape
 
 # coding: utf-8
-def index (D):
+def index (NW, NE, SE, SW):
     __lineoffset__ = -4
     loop = ForLoop()
     self = TemplateResult(); extend_ = self.extend
-    extend_([u'<div id="homeContainer"> \n'])
-    extend_([u'\n'])
+    extend_([u'<div id="homeContainer">\n'])
+    extend_([u'    <div id="plotholder">\n'])
+    extend_([u'    </div> \n'])
+    extend_([u'    <div id="datatester">\n'])
+    extend_([u'        <p id="textP">\n'])
+    extend_([u'        ahshad\n'])
+    extend_([u'        </p>\n'])
+    extend_([u'    </div>\n'])
     extend_([u'</div>\n'])
-    extend_([u'<div id="data">\n'])
-    extend_([escape_(D, True), u'\n'])
+    extend_([u'<div id="NWdata">\n'])
+    for i in loop.setup(NW):
+        for j in loop.setup(i):
+            extend_([escape_(float(j), True), u'\n'])
+    extend_([u'</div>\n'])
+    extend_([u'<div id="NEdata">\n'])
+    for i in loop.setup(NW):
+        for j in loop.setup(i):
+            extend_([escape_(float(j), True), u'\n'])
+    extend_([u'</div>\n'])
+    extend_([u'<div id="SEdata">\n'])
+    for i in loop.setup(NW):
+        for j in loop.setup(i):
+            extend_([escape_(float(j), True), u'\n'])
+    extend_([u'</div>\n'])
+    extend_([u'<div id="SWdata">\n'])
+    for i in loop.setup(NW):
+        for j in loop.setup(i):
+            extend_([escape_(float(j), True), u'\n'])
     extend_([u'</div>\n'])
 
     return self
@@ -42,10 +65,29 @@ def base (page):
     extend_([u'    <link rel="stylesheet" type="text/css" href="/static/Styles/mobile.css" media="only screen and (max-device-width: 767px)" />\n'])
     extend_([u'    <link rel="stylesheet" type="text/css" href="/static/Styles/screen.css" media="only screen and (min-device-width: 768px)" />\n'])
     extend_([u'    <link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico" />\n'])
-    extend_([u'    <script type="text/javascript" src="/static/Scripts/flot/jquery.js"></script>\n'])
-    extend_([u'    <script type="text/javascript" src="/static/Scripts/flot/jquery.flot.js"></script>\n'])
-    extend_([u'    <script type="text/javascript" src="/static/Scripts/jquery.csv-0.71.js"></script>\n'])
+    extend_([u'    <script src="http://code.jquery.com/jquery-1.8.2.js"></script>\n'])
+    extend_([u'    <script src="http://cdnjs.cloudflare.com/ajax/libs/flot/0.7/jquery.flot.min.js"></script>\n'])
+    extend_([u'    <script src="http://jquery-csv.googlecode.com/git/src/jquery.csv.js"></script>\n'])
     extend_([u'    <script type="text/javascript" src="/static/Scripts/bridgecontrol.js"></script>\n'])
+    extend_([u'    <script>\n'])
+    extend_([u'        jQuery( document ).ready(function() {\n'])
+    extend_([u'                flotTextData();\n'])
+    extend_([u'        });\n'])
+    extend_([u'\n'])
+    extend_([u'        function flotTextData() {\n'])
+    extend_([u'                var options = {\n'])
+    extend_([u'                series: {\n'])
+    extend_([u'                        lines: { show: true },\n'])
+    extend_([u'                }\n'])
+    extend_([u'                };\n'])
+    extend_([u'                var data1 = [];\n'])
+    extend_([u'                data1[0] = jQuery.csv.toArrays(', escape_(('#NWdata'), True), u'.val(), {\n'])
+    extend_([u'                onParseValue: jQuery.csv.hooks.castToScalar\n'])
+    extend_([u'                });\n'])
+    extend_([u"                flot1 = jQuery.plot(jQuery('#plotholder'), data1, options);\n"])
+    extend_([u'                jQuery("#textP").text("happy");\n'])
+    extend_([u'        }\n'])
+    extend_([u'    </script>\n'])
     extend_([u'</head>\n'])
     extend_([u'<body>\n'])
     extend_([u'        <!-- Define the header for the page -->\n'])

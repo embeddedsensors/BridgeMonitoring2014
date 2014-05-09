@@ -172,7 +172,17 @@ h2 a:active {
 /*****************************************************************************
  Data section
  ****************************************************************************/
-#data {
+#NWdata {
 	display: none;
 }
+#NEdata {
+	display: none;
+}
+#SEdata {
+	display: none;
+}
+#SWdata {
+	display: none;
+}
+
 /* End Screen Layout */
