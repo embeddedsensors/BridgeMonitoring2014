@@ -5,7 +5,7 @@ Process data from the Newport Bridge from OCE 496
 import csv
 import scipy.io as sio
 
-from gpsutil import lat2meter
+from libs.GPSUtil import lat2meter
 
 origin_lat = 41.50495
 origin_lon = -71.348831
